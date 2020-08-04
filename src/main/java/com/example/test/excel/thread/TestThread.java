@@ -47,7 +47,6 @@ public class TestThread {
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
-
                     }
                 }
             }
