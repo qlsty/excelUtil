@@ -100,7 +100,7 @@
     }
 服务端调用accept是 就会阻塞直到有请求进来。一旦有请求进来**clnt_sock**就代表了请求方的文件描述符，可以使用此描述符和请求方通信。主要是 write和read方式。此时调用write如果内核缓冲区已满，则`等待`（blocking IO）直到内核缓冲区有足够空间写入。写入后write返回。调用read方法如果缓冲区没有可读的数据则`一直等待`（blocking IO）到缓冲区有数据可读。将数据从内存缓中区读出。
 上面这种blocking IO方式浪费cpu资源因此nonblocking IO应用而生 代码如下
-```c
+```
       int flags = fcntl(clnt_sock , F_GETFL, 0);
       fcntl(clnt_sock , F_SETFL, flags|O_NONBLOCK);
 ```
